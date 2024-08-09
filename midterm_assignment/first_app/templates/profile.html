@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Profile Page</h1>
+<a href = "{% url 'edit_profile'%}" class = 'btn btn-primary'>Edit Profile</a>
+
+<div class="col-12 p-3">
+  <h4 class="d-flex justify-content-center">Order History</h4>
+  <div class="d-flex flex-wrap justify-content-center pt-5">
+    {% for order in orders%}
+    <div class="col-sm-3">
+      <div class="card m-2">
+        <div class="card-body">
+          <img
+            class="card-img-top"
+            src="{{order.car.image.url}}"
+            alt="Card image cap"
+          />
+          <h5 class="card-title">{{order.car.name}}</h5>
+          <h5 class="card-title">Price : {{order.car.price}}</h5>
+          <h5>Brand Name : {{order.car.brand.name}}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
